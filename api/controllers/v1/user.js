@@ -1,5 +1,5 @@
+const Api = require('koa-hooks').Api
 const UserService = require('../../services/user.js')
-const Api = require('../../../lib/api_builder')
 
 class UserApi extends Api {
   constructor(ctx, next, cb){
