@@ -36,24 +36,6 @@ module.exports = {
     primaryKey: true,
     field: 'phone'
   },
-  address: {
-    type: Sequelize.STRING,
-    field: 'address'
-  },
-  unionId: {
-    type: Sequelize.STRING,
-    field: 'unionid'
-  },
-  weiboId: {
-    type: Sequelize.STRING,
-    field: 'weiboid'
-  },
-  // 用户状态
-  status: {
-    type: Sequelize.INTEGER,
-    field: 'status',
-    defaultValue: 0
-  },
   realname: {
     type: Sequelize.STRING,
     field: 'realname'
@@ -63,36 +45,6 @@ module.exports = {
     values: ['unknown', 'male', 'female'],
     field: 'gender',
     defaultValue: 'unknown'
-  },
-  // 用户等级
-  grade: {
-    type: Sequelize.STRING,
-    field: 'grade',
-    defaultValue: 'default'
-  },
-  // 账户余额
-  balance: {
-    type: Sequelize.DECIMAL(10, 2),
-    field: 'balance'
-  },
-  // 记录相关
-  registeredIp: {
-    type: Sequelize.STRING,
-    field: 'regip'
-  },
-  latestVisitIp: {
-    type: Sequelize.STRING,
-    field: 'lastip'
-  },
-  loginCount: {
-    type: Sequelize.INTEGER,
-    field: 'logins'
-  },
-	//超级用户或系统管理员等
-  generated: {
-    type: Sequelize.INTEGER,
-    field: 'isSystem',
-    defaultValue: 0
   },
   // 保留字段  
   default1: {
