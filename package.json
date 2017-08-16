@@ -12,6 +12,7 @@
     "koa-compress": "^2.0.0",
     "koa-cors": "^0.0.16",
     "koa-csrf": "^3.0.4",
+    "koa-hooks": "^0.2.3",
     "koa-morgan": "^1.0.1",
     "koa-router": "^7.0.0",
     "koa-session": "^5.0.0",
@@ -26,6 +27,7 @@
     "python-shell": "^0.4.0",
     "redis": "^2.7.1",
     "sequelize": "^3.30.4",
+    "sequelize-redis-cache": "^2.0.0",
     "soap": "^0.18.0"
   },
   "devDependencies": {

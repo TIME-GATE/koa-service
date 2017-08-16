@@ -72,3 +72,13 @@
 }
 
 ```
+
+### 四、EXAMPLES
+
+```text
+cnpm install 
+
+npm run start
+
+curl http://127.0.0.1:3000/fetch/user/optional
+```

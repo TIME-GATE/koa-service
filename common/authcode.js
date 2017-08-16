@@ -27,7 +27,6 @@ class AuthCode {
           break
       }
     } catch (err) {
-      console.log(err)
       return 'DECODE' === operation ? ':::' : null
     }   
   
