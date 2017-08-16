@@ -38,9 +38,9 @@ module.exports = {
   ],
   
   clientSignToken: {
-    web: "ytxbdad394fe6829e24b08b8ccf13b25719web",
-    ios: "ytxbdad394fe6829e24b08b8ccf13b25719ios",
-    android: "ytxbdad394fe6829e24b08b8ccf13b25719and",
+    web: "ytxbdadp5a3o1c7yvXRbMX7gVNFqEtwusd7qweb",
+    ios: "ytxbdadp5a3o1c7yvXRbMX7gVNFqEtwusd7qios",
+    android: "ytxp5a3o1c7yvXRbMX7gVNFqEtwusd7qand",
   },
 
   httpProxy: {
