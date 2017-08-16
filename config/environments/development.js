@@ -7,11 +7,11 @@ module.exports = {
     },
     
     mysql: {
-      host: '182.92.5.50',
+      host: '127.0.0.1',
       port: 3306,
-      database: 'xltg_db_2',
+      database: 'hello-world',
       username: 'admin',
-      password: 'blindmen' 
+      password: '*' 
     },
  
     redis: {
