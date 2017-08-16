@@ -5,8 +5,7 @@
 const sequelize = require('../common/sequelize')
 
 const AccountSchema = require('./schemas/account')
-
-const { wechatProxy } = require('../config').httpProxy
+const Cacher = require('../common/cache')
 
 const Account = sequelize.define('Account', AccountSchema, {
   tableName: 'account',
@@ -15,3 +14,6 @@ const Account = sequelize.define('Account', AccountSchema, {
 })
 
 module.exports = Account
+
+// 如果需要加入cache, 如下:
+// module.exports = Cacher('Account', 5)
