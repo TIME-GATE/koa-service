@@ -6,7 +6,8 @@ const path = require('path');
 
 [
   'Account',
-].map((modelName) => {
+]
+.map((modelName) => {
   exports[modelName] = require(path.join(__dirname, modelName))
 })
 

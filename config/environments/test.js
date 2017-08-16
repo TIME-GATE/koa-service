@@ -1,7 +1,7 @@
 module.exports = {
   database: {
     mongodb: {
-      db: 'mongodb://127.0.0.1/ytx_mobile_dev',
+      db: 'mongodb://127.0.0.1/mobile_dev',
       dbName: 'hello-world',
       defaultLimit: 1000
     },
