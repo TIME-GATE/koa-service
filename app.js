@@ -2,7 +2,6 @@ const Koa = require('koa')
 const router = require('koa-router')()
 
 const compress = require('koa-compress')
-const session = require('koa-session')
 const bodyParser = require('koa-bodyparser')
 
 const csrf = require('koa-csrf')
@@ -35,7 +34,6 @@ config.routes.map((route) => {
 /**
  * cors: 允许跨域
  * config.logger.access: 开启请求日志
- * session: 设置session 
  * bodyParser: 参数解析 
  * compress: 压缩数据包
  * authorization 认证中间件
@@ -43,7 +41,6 @@ config.routes.map((route) => {
  */
 app.use(cors())
 app.use(config.logger.access())
-app.use(session(app))
 app.use(bodyParser())
 app.use(authorization)
 app.use(router.routes())
