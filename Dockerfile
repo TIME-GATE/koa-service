@@ -1,4 +1,4 @@
-FROM daocloud.io/baidao/node-and-python:v0.1
+FROM node:7.10
 
 RUN npm config set registry https://registry.npm.taobao.org &&\
     npm install -g pm2
@@ -14,4 +14,3 @@ COPY . .
 EXPOSE 3000
 
 CMD ["pm2-docker", "app.js"]
-
