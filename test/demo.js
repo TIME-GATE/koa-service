@@ -1,3 +1,3 @@
-const addon = require('../build/Release/addon');
+const demo = require('../build/Release/demo');
 
-console.log(addon.hello());
+console.log(demo.hello());

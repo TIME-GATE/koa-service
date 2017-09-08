@@ -61,12 +61,6 @@
     "want_separate_host_toolset_mkpeephole": 0,
     "xcode_version": "7.0",
     "nodedir": "/Users/helloworld/.node-gyp/7.6.0",
-    "copy_dev_lib": "true",
-    "standalone_static_library": 1,
-    "registry": "https://registry.npm.taobao.org",
-    "userconfig": "/Users/helloworld/.cnpmrc",
-    "r": "https://registry.npm.taobao.org",
-    "disturl": "https://npm.taobao.org/mirrors/node",
-    "cache": "/Users/helloworld/.npminstall_tarball"
+    "standalone_static_library": 1
   }
 }
