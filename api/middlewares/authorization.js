@@ -14,21 +14,21 @@ module.exports = async function(ctx, next) {
   const clientSignature = ctx.header.sign || ''
   const serverSignature = Authentication.signParams(allParams, ctx.header.clienttype)
   const authorization = ctx.header.authorization
+  const auth = authcode.decode(authorization, ctx.header.clienttype).split(':')
+
   // app做签名校验 白名单与微信端默认信任
-  if(serverSignature === clientSignature || ctx.header.clienttype === 'web' || true) {
-    const auth = authcode.decode(authorization, ctx.header.clienttype).split(':')
-    return await readCache(`${auth[0]}:${auth[1]}`).then((token) => {
-      token && token ===  authorization ? (ctx.currentAccount = auth[0]) : (ctx.currentAccount = null)
-      return next()
-    })
+  if(serverSignature === clientSignature || ctx.header.clienttype === 'web') {
+    const token = await readCache(`${auth[0]}:${auth[1]}`)
+    token && token ===  authorization ? (ctx.currentAccount = auth[0]) : (ctx.currentAccount = null)
+    return next()
   }
 
   ctx.response.status = 403
   const errors = { message: '您没有权限访问', code: 1, data: {} }
     
   if(config.env.isDevelopment()) {
-    errors.message += `clientSignature: ${clientSignature}`
-    errors.message += `serverSignature: ${serverSignature}`
+    errors.data.clientSignature = clientSignature
+    errors.data.serverSignature = serverSignature
   }
 
   ctx.body = errors

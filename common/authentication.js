@@ -38,10 +38,8 @@ module.exports.signParams = (params, token) => {
   switch (token) {
     case 'web':
       return sign.signParams()
-      break
     default:
       return sign.signParams()
-      break
   }
 
 }
