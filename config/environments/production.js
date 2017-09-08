@@ -1,13 +1,13 @@
 module.exports = {
   database: {
     mongodb: {
-      db: 'mongodb://127.0.0.1/mobile_dev',
+      db: 'mongodb://101.132.32.250/mobile_dev',
       dbName: 'hello-world',
       defaultLimit: 1000
     },
     
     mysql: {
-      host: '127.0.0.1',
+      host: '101.132.32.250',
       port: 3306,
       database: 'hello-world',
       username: 'admin',
@@ -15,7 +15,7 @@ module.exports = {
     },
  
     redis: {
-      host: '127.0.0.1',
+      host: '101.132.32.250',
       port: 6379,
       options: {}
     },
