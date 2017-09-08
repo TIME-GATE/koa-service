@@ -18,6 +18,9 @@
 |____k8s.yaml       # k8s配置文件
 |____package.json   # 模块依赖文件
 |____.gitlab-ci.yml # CI配置文件
+|____binding.gyp    # C++模块依赖配置文件
+|____build          # C++插件编译后文件
+|____src            # C++插件源文件
 |____config         # 所有静态配置文件
 | |____environments # 环境配置文件
 | |____*.js         # production dev test
