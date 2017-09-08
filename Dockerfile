@@ -1,15 +1,16 @@
 FROM node:7.10
 
 RUN npm config set registry https://registry.npm.taobao.org &&\
-    npm install -g pm2
+    npm install -g pm2 &&\
+    npm install -g node-gyp
 
 WORKDIR /var/workspace
 
-COPY package.json .
-
-RUN npm install --production && npm cache clean
-
 COPY . .
+
+RUN npm install --production && npm cache clean &&\
+    node-gyp configure &&\
+    node-gyp build
 
 EXPOSE 3000
 
