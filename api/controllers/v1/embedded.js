@@ -5,6 +5,7 @@ class EmbeddedApi extends Api {
   constructor(ctx, next, cb){
     super(ctx, next, cb)
     this.addHooks([
+      
     ])
   }
 

@@ -1,6 +1,4 @@
 const Models = require('../../models')
-
-const { Code, CodeMsg } = require('../../config')
 const demo = require('../../build/Release/demo')
 
 class EmbeddedService {
