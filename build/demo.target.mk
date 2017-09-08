@@ -45,10 +45,10 @@ CFLAGS_OBJC_Debug :=
 CFLAGS_OBJCC_Debug :=
 
 INCS_Debug := \
-	-I/Users/dreamboad/.node-gyp/7.6.0/include/node \
-	-I/Users/dreamboad/.node-gyp/7.6.0/src \
-	-I/Users/dreamboad/.node-gyp/7.6.0/deps/uv/include \
-	-I/Users/dreamboad/.node-gyp/7.6.0/deps/v8/include
+	-I/Users/helloworld/.node-gyp/7.6.0/include/node \
+	-I/Users/helloworld/.node-gyp/7.6.0/src \
+	-I/Users/helloworld/.node-gyp/7.6.0/deps/uv/include \
+	-I/Users/helloworld/.node-gyp/7.6.0/deps/v8/include
 
 DEFS_Release := \
 	'-DNODE_GYP_MODULE_NAME=demo' \
@@ -91,10 +91,10 @@ CFLAGS_OBJC_Release :=
 CFLAGS_OBJCC_Release :=
 
 INCS_Release := \
-	-I/Users/dreamboad/.node-gyp/7.6.0/include/node \
-	-I/Users/dreamboad/.node-gyp/7.6.0/src \
-	-I/Users/dreamboad/.node-gyp/7.6.0/deps/uv/include \
-	-I/Users/dreamboad/.node-gyp/7.6.0/deps/v8/include
+	-I/Users/helloworld/.node-gyp/7.6.0/include/node \
+	-I/Users/helloworld/.node-gyp/7.6.0/src \
+	-I/Users/helloworld/.node-gyp/7.6.0/deps/uv/include \
+	-I/Users/helloworld/.node-gyp/7.6.0/deps/v8/include
 
 OBJS := \
 	$(obj).target/$(TARGET)/src/demo.o

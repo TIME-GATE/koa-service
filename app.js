@@ -13,10 +13,10 @@ const config = require('./config')
 const authorization = require('./api/middlewares/authorization')
 
 // 同步数据库
-sequelize.sync()
+//sequelize.sync()
 
-require('./schedules')
-require('./models')
+//require('./schedules')
+//require('./models')
 
 const app = new Koa()
 
