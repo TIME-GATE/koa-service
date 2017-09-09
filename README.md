@@ -83,5 +83,5 @@ cnpm install
 
 npm run start
 
-curl http://127.0.0.1:3000/fetch/user/optional
+curl 127.0.0.1:3000/v1/verb/get
 ```
