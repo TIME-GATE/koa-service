@@ -1,6 +1,13 @@
-接口地址以及说明
+项目简介
+```text
+  1、基于koa2实现的web框架，包含Rest-ful、Middleware、Hooks、鉴权等
+  2、封装了MongoDB、Mysql、redis等数据操作接口
+  3、通信包含Mqtt、Http、TCP(websocket/socket)
+  4、用C++编写Node扩展库，方便对第三方的C++调用及分离计算密集型业务
+  5、采用Docker方式部署，Git-ci自动测试发布、Gulp集成开发，Mocha单元测试
+```
 --------------
-
+ 
 ### 一、接口地址
 + 开发环境 地址: `http://127.0.0.1:3000/`
 + 测试环境 地址: `http://127.0.0.1:3000/`
