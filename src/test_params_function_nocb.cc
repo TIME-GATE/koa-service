@@ -32,8 +32,8 @@ void RunCallback(const FunctionCallbackInfo<Value>& args) {
 
   Local<Function> cb = Local<Function>::Cast(args[0]);
   Local<Object> object = Object::New(isolate);
-  Local<Value> argv[1] = { String::NewFromUtf8(isolate, object->ToString()) };
- 
+  Local<Value> argv[1] = { String::NewFromUtf8(isolate, "hello world") }; 
+  
   cb->Call(Null(isolate), 1, argv);
 }
 

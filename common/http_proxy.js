@@ -25,6 +25,10 @@ module.exports.httpProxy = (proxyUrl, params, options = {}) => {
 
 module.exports.embeddedProxy = (cb, params) => {
   return new Promise((resolve, reject) => {
-    return cb((data) => { resolve(data) }, params)
+    try {
+      return cb((data) => { resolve(data) }, params)
+    } catch (err) {
+      return resolve({ data: "调用失败" })
+    }
   })
 }
