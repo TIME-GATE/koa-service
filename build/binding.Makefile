@@ -3,4 +3,4 @@
 export builddir_name ?= ./build/.
 .PHONY: all
 all:
-	$(MAKE) demo
+	$(MAKE) test_post_params_nocb demo
