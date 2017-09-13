@@ -1,4 +1,4 @@
-// test_post_params_nocb.cc
+// test_params_nocb.cc
 #include <node.h>
 
 namespace demo {
@@ -44,6 +44,6 @@ void Init(Local<Object> exports) {
   NODE_SET_METHOD(exports, "add", Add);
 }
 
-NODE_MODULE(test_post_params_nocb, Init)
+NODE_MODULE(test_params_nocb, Init)
 
 }  // namespace demo

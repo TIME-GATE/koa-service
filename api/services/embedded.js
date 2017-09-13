@@ -1,8 +1,10 @@
 const Models = require('../../models')
 const { embeddedProxy } = require('../../common/http_proxy')
 const Demo = require('../../build/Release/demo')
-const ParamsNocb = require('../../build/Release/test_post_params_nocb')
-const PostFunctionNocb = require('../../build/Release/test_post_function_nocb')
+const ParamsNocb = require('../../build/Release/test_params_nocb')
+const FunctionNocb = require('../../build/Release/test_function_nocb')
+const ParamsFunctionNocb = require('../../build/Release/test_params_function_nocb')
+
 
 class EmbeddedService {
 
@@ -10,12 +12,16 @@ class EmbeddedService {
     return { data: await Promise.resolve(Demo.hello('hello')) }
   }
 
-  async testPostParamsNocb(ctx, next) {
+  async testParamsNocb(ctx, next) {
     return { data: await Promise.resolve(ParamsNocb.add(12, 21)) }
   }
 
-  async testPostFunctionNocb(ctx, next) {
-    return { data: await embeddedProxy(PostFunctionNocb) }
+  async testFunctionNocb(ctx, next) {
+    return { data: await embeddedProxy(FunctionNocb) }
+  }
+
+  async testPramasFunctionNocb(ctx, next) {
+    return { data: await embeddedProxy(ParamsFunctionNocb, 'hello world meng qi') }
   }
 
 }

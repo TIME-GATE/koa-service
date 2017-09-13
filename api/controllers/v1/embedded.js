@@ -14,13 +14,18 @@ class EmbeddedApi extends Api {
     data ? cb(ctx, data) : await next()
   }
 
-  async testPostParamsNocb(ctx, next, cb) {
-    const data = await EmbeddedService.testPostParamsNocb(ctx, next)
+  async testParamsNocb(ctx, next, cb) {
+    const data = await EmbeddedService.testParamsNocb(ctx, next)
     data ? cb(ctx, data) : await next()
   }
 
-  async testPostFunctionNocb(ctx, next, cb) {
-    const data = await EmbeddedService.testPostFunctionNocb(ctx, next)
+  async testFunctionNocb(ctx, next, cb) {
+    const data = await EmbeddedService.testFunctionNocb(ctx, next)
+    data ? cb(ctx, data) : await next()
+  }
+
+  async testParamsFunctionNocb(ctx, next, cb) {
+    const data = await EmbeddedService.testParamsFunctionNocb(ctx, next)
     data ? cb(ctx, data) : await next()
   }
 

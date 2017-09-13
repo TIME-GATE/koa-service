@@ -1,4 +1,4 @@
-// test_post_function_nocb.cc
+// test_params_function_nocb.cc
 #include <node.h>
 
 namespace demo {
@@ -15,15 +15,14 @@ using v8::Value;
 void RunCallback(const FunctionCallbackInfo<Value>& args) {
   Isolate* isolate = args.GetIsolate();
   Local<Function> cb = Local<Function>::Cast(args[0]);
-  const unsigned argc = 1;
-  Local<Value> argv[argc] = { String::NewFromUtf8(isolate, "hello world") };
-  cb->Call(Null(isolate), argc, argv);
+  Local<Value> argv[1] = { String::NewFromUtf8(isolate, "hello world") };
+  cb->Call(Null(isolate), 1, argv);
 }
 
 void Init(Local<Object> exports, Local<Object> module) {
   NODE_SET_METHOD(module, "exports", RunCallback);
 }
 
-NODE_MODULE(test_post_function_nocb, Init)
+NODE_MODULE(test_params_function_nocb, Init)
 
 }  // namespace demo

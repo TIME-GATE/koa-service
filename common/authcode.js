@@ -20,11 +20,9 @@ class AuthCode {
         case 'DECODE':
           const decipher = crypto.createDecipher('aes192', key)
           return decipher.update(data, 'hex', 'utf8') + decipher.final('utf8') 
-          break
         case 'ENCODE':
           const cipher = crypto.createCipher('aes192', key)
           return cipher.update(data, 'utf8', 'hex') + cipher.final('hex')
-          break
       }
     } catch (err) {
       return 'DECODE' === operation ? ':::' : null
