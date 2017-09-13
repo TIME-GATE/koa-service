@@ -19,14 +19,12 @@ module.exports.httpProxy = (proxyUrl, params, options = {}) => {
       } catch(err) {
         resolve({ code: -1, message: '解析失败' })
       }
-    }) 
+    })
   })
 }
 
-module.exports.embeddedProxy = (cb) => {
+module.exports.embeddedProxy = (cb, params) => {
   return new Promise((resolve, reject) => {
-    cb((msg) => {
-      resolve(msg)
-    })
+    return cb((data) => { resolve(data) }, params)
   })
 }

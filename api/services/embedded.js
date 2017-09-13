@@ -20,8 +20,8 @@ class EmbeddedService {
     return { data: await embeddedProxy(FunctionNocb) }
   }
 
-  async testPramasFunctionNocb(ctx, next) {
-    return { data: await embeddedProxy(ParamsFunctionNocb, 'hello world meng qi') }
+  async testParamsFunctionNocb(ctx, next) {
+    return { data: await embeddedProxy(ParamsFunctionNocb, { data: 'mengqi' }) }
   }
 
 }
