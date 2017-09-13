@@ -5,5 +5,6 @@ module.exports.routes = [
   { verb: 'PUT',    path: '/v1/verb/delete',    fn: 'verb.verbDeleteOnThisRequest',       desc: '测试DELETE' },
   { verb: 'GET',    path: '/v1/embedded',       fn: 'embedded.verbGetOnThisEmbedded',     desc: '嵌入式测试' },
   { verb: 'GET',    path: '/v1/testParamsNocb', fn: 'embedded.testPostParamsNocb',        desc: '传值无回调返回' },
+  { verb: 'GET',    path: '/v1/testFuncsNocb',  fn: 'embedded.testPostFunctionNocb',      desc: '传函数无回调返回' },
 
 ]

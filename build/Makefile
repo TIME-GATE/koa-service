@@ -326,6 +326,11 @@ ifeq ($(strip $(foreach prefix,$(NO_LOAD),\
 endif
 ifeq ($(strip $(foreach prefix,$(NO_LOAD),\
     $(findstring $(join ^,$(prefix)),\
+                 $(join ^,test_post_function_nocb.target.mk)))),)
+  include test_post_function_nocb.target.mk
+endif
+ifeq ($(strip $(foreach prefix,$(NO_LOAD),\
+    $(findstring $(join ^,$(prefix)),\
                  $(join ^,test_post_params_nocb.target.mk)))),)
   include test_post_params_nocb.target.mk
 endif

@@ -22,3 +22,11 @@ module.exports.httpProxy = (proxyUrl, params, options = {}) => {
     }) 
   })
 }
+
+module.exports.embeddedProxy = (cb) => {
+  return new Promise((resolve, reject) => {
+    cb((msg) => {
+      resolve(msg)
+    })
+  })
+}

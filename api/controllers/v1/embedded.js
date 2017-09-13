@@ -19,6 +19,11 @@ class EmbeddedApi extends Api {
     data ? cb(ctx, data) : await next()
   }
 
+  async testPostFunctionNocb(ctx, next, cb) {
+    const data = await EmbeddedService.testPostFunctionNocb(ctx, next)
+    data ? cb(ctx, data) : await next()
+  }
+
 }
 
 module.exports = (ctx, next, cb) => new EmbeddedApi(ctx, next, cb)
