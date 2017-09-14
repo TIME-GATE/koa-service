@@ -8,9 +8,7 @@ WORKDIR /var/workspace
 
 COPY . .
 
-RUN npm install --production && npm cache clean &&\
-    node-gyp configure &&\
-    node-gyp build
+RUN npm install --production && npm cache clean
 
 EXPOSE 3000
 
