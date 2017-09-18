@@ -10,6 +10,10 @@ COPY . .
 
 RUN npm install --production && npm cache clean
 
+RUN node-gyp configure
+
+RUN node-gyp build
+
 EXPOSE 3000
 
 CMD ["pm2-docker", "app.js"]
