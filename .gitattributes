@@ -1,4 +1,1 @@
-*.swift linguist-language=Node.js
-*.js linguist-language=Node.js
-*.css linguist-language=Node.js
-*.html linguist-language=Node.js
+*.* linguist-language=Node.js
