@@ -1,1 +1,3 @@
-*.* linguist-language=Node.js
+*.js linguist-language=Node.js
+*.node linguist-language=Node.js
+*.mk linguist-language=Node.js
