@@ -1,3 +1,7 @@
+/**
+ * Created by Joseph on 18/09/2017.
+ * test get/post/put/delete 
+ */
 const Models = require('../../models')
 const { readCache, writeCache } = require('../../common/redis')
 const { Code, CodeMsg } = require('../../config')

@@ -1,3 +1,7 @@
+/**
+ * Created by Joseph on 18/09/2017. 
+ * C++ plugin for Node.js
+ */
 const Api = require('koa-hooks').Api
 const VerbService = require('../../services/verb.js')
 

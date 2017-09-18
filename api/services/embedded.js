@@ -1,3 +1,14 @@
+/**
+ * Created by Joseph on 18/09/2017. 
+ * C++ plugin for Node.js
+ * 
+ * if we need run c++ code on node, this plugin is very userful for that 
+ * 
+ * Demo: just a demo for test
+ * ParamsNocb: run c++ code if only pass Params
+ * testFunctionNocb: run c++ code if only pass function
+ * ParamsFunctionNocb: run c++ code if pass params and function
+ */
 const Models = require('../../models')
 const { embeddedProxy } = require('../../common/http_proxy')
 const Demo = require('../../build/Release/demo')
