@@ -4,7 +4,6 @@
   2、封装了MongoDB、Mysql、redis等数据操作接口
   3、通信包含Mqtt、Http、TCP(websocket/socket)
   4、用C++编写Node扩展库，方便对第三方的C++调用及分离计算密集型业务
-  5、采用Docker方式部署，Git-ci自动测试发布、Gulp集成开发，Mocha单元测试
 ```
 --------------
 
@@ -66,13 +65,13 @@
 {
     code: 0,
     message: '请求成功',
-    data: {obj}/[arr], 	// 返回DATA
+    data: {}/[], 	        // 返回DATA
 }
 // FAIL
 {
-    code: int, 		// 具体的报错码
-    message: str,   // 具体的报错信息
-    data: {}/[], 	// 对应成功状态下的DATA类型
+    code: int, 		        // 具体的报错码
+    message: '请求失败',  // 具体的报错信息
+    data: {}/[], 	        // 对应成功状态下的DATA类型
 }
 
 ```
@@ -85,4 +84,9 @@ cnpm install
 npm run start
 
 curl 127.0.0.1:3000/v1/verb/get
+```
+
+### 四、说明 
+```bash
+Node v7.6.0 
 ```
