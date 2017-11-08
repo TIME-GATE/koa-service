@@ -2,8 +2,7 @@
 ```text
   1、基于koa2实现的web框架，包含Rest-ful、Middleware、Hooks、鉴权等
   2、封装了MongoDB、Mysql、redis等数据操作接口
-  3、通信包含Mqtt、Http、TCP(websocket/socket)
-  4、用C++编写Node扩展库，方便对第三方的C++调用及分离计算密集型业务
+  3、用C++编写Node扩展库，方便对第三方的C++调用及分离计算密集型业务
 ```
 --------------
 
