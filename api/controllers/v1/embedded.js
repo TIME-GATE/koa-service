@@ -9,12 +9,17 @@ class EmbeddedApi extends Api {
   constructor(ctx, next, cb){
     super(ctx, next, cb)
     this.addHooks([
-      
+      'unlockYourCplusJourney.beforeUnlockYourCplusJourney'
     ])
   }
 
-  async verbGetOnThisEmbedded(ctx, next, cb) {
-    const data = await EmbeddedService.verbGetOnThisEmbedded(ctx, next)
+  async beforeUnlockYourCplusJourney(ctx, next, cb) {
+    const data = await EmbeddedService.beforeUnlockYourCplusJourney(ctx, next)
+    data ? cb(ctx, data) : await next()
+  }
+
+  async unlockYourCplusJourney(ctx, next, cb) {
+    const data = await EmbeddedService.unlockYourCplusJourney(ctx, next)
     data ? cb(ctx, data) : await next()
   }
 

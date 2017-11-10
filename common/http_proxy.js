@@ -28,7 +28,7 @@ module.exports.embeddedProxy = (cb, params) => {
     try {
       return cb((data) => { resolve(data) }, params)
     } catch (err) {
-      return resolve({ data: "调用失败" })
+      return resolve({ data: "调用失败", code: -1 })
     }
   })
 }

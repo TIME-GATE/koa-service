@@ -24,9 +24,6 @@ module.exports = Object.assign(config, routes, envConfig, {
     isTest: () => {
       return env === 'test'
     },
-    isCI: () => {
-      return env === 'ci'
-    },
     isStaging: () => {
       return env === 'staging'
     },

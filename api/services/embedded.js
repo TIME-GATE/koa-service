@@ -19,7 +19,11 @@ const ParamsFunctionNocb = require('../../build/Release/test_params_function_noc
 
 class EmbeddedService {
 
-  async verbGetOnThisEmbedded(ctx, next) {
+  async beforeUnlockYourCplusJourney(ctx, next) {
+    return !(ctx.request.body || ctx.request.query) ? { data: 'Traveling Lignt!' } : null
+  }
+
+  async unlockYourCplusJourney(ctx, next) {
     return { data: await Promise.resolve(Demo.hello('hello')) }
   }
 
