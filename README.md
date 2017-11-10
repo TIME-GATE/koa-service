@@ -1,12 +1,13 @@
-项目简介
+### 简介
 ```text
-  1、基于koa2实现的web框架，包含Rest-ful、Middleware、Hooks、鉴权等
+  1、包含Rest-ful、Middleware、Hooks、鉴权等
   2、封装了MongoDB、Mysql、redis等数据操作接口
-  3、用C++编写Node扩展库，方便对第三方的C++调用及分离计算密集型业务
+  3、用C++编写Node扩展库DEMO，方便对第三方的C++调用及分离计算密集型业务
 ```
+
 --------------
 
-### 一、项目目录结构
+### 一、目录结构
 
 ```text
 |____README.md      # 项目说明文件
