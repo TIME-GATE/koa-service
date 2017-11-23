@@ -1,7 +1,7 @@
 ### 简介
 ```text
   1、包含Rest-ful、Middleware、Hooks、鉴权等
-  2、封装了MongoDB、Mysql、redis等数据操作接口
+  2、包含MongoDB、Mysql、redis等数据操作库或接口
   3、用C++编写Node扩展库DEMO，方便对第三方的C++调用及分离计算密集型业务
 ```
 
@@ -15,9 +15,7 @@
 |____Dockerfile     # Doker配置文件
 |____build.sh       # 项目Doker版本发布
 |____gulpfile.js    # gulp配置文件
-|____k8s.yaml       # k8s配置文件
 |____package.json   # 模块依赖文件
-|____.gitlab-ci.yml # CI配置文件
 |____binding.gyp    # C++模块依赖配置文件
 |____build          # C++插件编译后文件
 |____src            # C++插件源文件
@@ -81,12 +79,13 @@
 ```text
 cnpm install 
 
-npm run start
+npm run start || gulp serve
 
 curl 127.0.0.1:3000/v1/verb/get
 ```
 
 ### 四、说明 
 ```bash
-Node v7.6.0 
+docker run -d -p 6379:6379 redis:latest
+Node >= v7.6.0
 ```
