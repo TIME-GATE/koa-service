@@ -16,6 +16,14 @@ module.exports = async function(ctx, next) {
   const serverSignature = Authentication.signParams(allParams, ctx.header.clienttype)
   const authorization = ctx.header.authorization
   const auth = authcode.decode(authorization, ctx.header.clienttype).split(':')
+  
+  // console.log(`################### PRINT API PARAMS BEGIN: ###################`)
+  // console.log(`################### HEADER: ###################\n`, ctx.header)
+  // console.log(`################### allParams: ###################\n`, allParams)
+  // console.log(`################### clienttype: ${ctx.header.clienttype} ###################`)
+  // console.log(`################### clientSignature: ${clientSignature} ###################`)
+  // console.log(`################### serverSignature: ${serverSignature} ###################`)
+  // console.log(`################### AUTHORIZATION CLIENT: ${authorization} ###################`)
 
   // app做签名校验 白名单与微信端默认信任
   if(serverSignature === clientSignature || ctx.header.clienttype === 'web') {
