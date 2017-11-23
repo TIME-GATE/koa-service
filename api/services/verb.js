@@ -9,7 +9,7 @@ const { Code, CodeMsg } = require('../../config')
 class VerbService {
 
   async beforeVerbCheckLogin(ctx, next) {
-    return !ctx.currentAccount ? { message: CodeMsg[10000], code: Code.NEED_LOGIN } : null
+    return !ctx.currentAccount ? { message: CODE_MSG[10000], code: CODE.NEED_LOGIN } : null
   }
 
   async verbGetOnThisTest(ctx, next) {

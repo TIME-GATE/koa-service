@@ -4,6 +4,7 @@
   "description": "ytx server ",
   "main": "index.js",
   "dependencies": {
+    "brain": "^0.7.0",
     "debug": "^2.6.3",
     "hooks": "^0.3.2",
     "iconv": "^2.2.3",
