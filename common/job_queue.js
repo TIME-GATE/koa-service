@@ -1,11 +1,10 @@
 /**
- * 后台任务队列 分布式最终一致性
+ * 后台任务队列
  */
 const kue = require('kue')
-const util = require('util')
 const config = require('../config')
 
-const queuePrefix = config.env.isProduction() ? 'mobile-q' : `mobile-q-${config.NODE_ENV}`
+const queuePrefix = `job:queue:${config.NODE_ENV}`
 
 const queue = kue.createQueue({
   prefix: queuePrefix,
@@ -14,35 +13,55 @@ const queue = kue.createQueue({
 
 queue.watchStuckJobs()
 
-queue.active( function( err, ids ) {
-  ids.forEach( function( id ) {
-    kue.Job.get( id, function( err, job ) {
-      if (err) {
-        err.message = 'kue load error'
-        console.error(err)
-      }
-      if (job) job.inactive()
+queue.active((err, ids) => {
+  ids.forEach((id) => {
+    kue.Job.get(id, (err, job) => {
+      if(err) console.error(Object.assign(err, { message: 'kue load error'}))
+      if(job) job.inactive()
     })
   })
 })
 
-queue.on('job enqueue', function(id, type){
-  console.log('Job %s got queued of type %s', id, type);
+queue.on('job enqueue', (id, type) => {
+  console.log(`Job ${id} got queued of type ${type}`)
 })
 
-queue.on('job complete', function(id){
-  kue.Job.get(id, function(err, job){
-    if (err) return;
-    job.remove(function(err){
-      if (err) throw err;
-      console.log('Removed completed job of type %s with id #%d \n', job.type, job.id);
-    });
-  });
+queue.on('job complete', (id) => {
+  kue.Job.get(id, (err, job) => {
+    if(!err) {
+      job.remove((err) => {
+        if(err) throw err
+        console.log(`######## Removed completed $${job.type} with id ${job.id} ########\n`)
+      })
+    }
+  })
 })
 
-queue.on('error', function(err) {
-  err.message = 'executing queue error';
-  console.log(err);
-});
+queue.on('error', (err) => {
+  err.message = '################### JOB:executing queue error ###################'
+  console.log(err)
+})
 
-module.exports = queue
+queue.on('failed', (err) => {
+  err.message = '################### JOB:executing queue failed ###################'
+  console.log(err)
+})
+
+const createJob = (jobName, args = {}, priority = 'normal') => {
+  queue.create(jobName, args)
+  .priority(priority)
+  .ttl(3600)
+  .save()
+}
+
+module.exports.createJob = createJob
+module.exports.processJob = (jobName, cb) => {
+  queue.process(jobName, async (job, done) => {
+    console.log(`###################JOB:${job.type}: IS IN PROCESS ###################`)
+    const result = await cb(job.data, done)
+    if(result.code) {
+      console.log(`###################JOB:${job.type}: IS FAILED AND ATTEMPTS ###################`)
+      job.attempts(3).backoff(true)
+    }
+  })
+}

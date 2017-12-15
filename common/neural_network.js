@@ -1,9 +1,12 @@
 const brain = require('brain')
 const fs = require('fs');
 const Tokenizer = require('nodejieba')
+const path = require('path')
 
-const authcode = require('../common/authcode')
 const trainModel = new brain.NeuralNetwork()
+const testDataDir = path.join(__dirname, '../data/test.csv')
+
+console.log(testDataDir)
 
 const hash = {
   '苹果': 110,
@@ -14,7 +17,7 @@ const hash = {
   '诺基': 115
 }
 
-const text = fs.readFileSync('/Users/helloworld/Project/koa-service/data/test.csv', 'utf-8').split('\n').slice(0, 100)
+const text = fs.readFileSync(testDataDir, 'utf-8').split('\n').slice(0, 100)
 const WORD_DATA = []
 
 text.forEach(tx => {

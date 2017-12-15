@@ -15,4 +15,7 @@ module.exports.routes = [
   // NEURAL NETWORK
   { verb: 'GET',    path: '/v1/testBrain',            fn: 'neural_network.testBrain',           desc: '测试神经网络' },
 
+  // GUARANTEE
+  { verb: 'POST',   path: '/v1/guarantee',            fn: 'guarantee.testGuarantee',           desc: '测试事务性保证' },
+
 ]
