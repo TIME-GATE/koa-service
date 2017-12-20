@@ -1,3 +1,4 @@
+const log = require('../../common/log')()
 const JobQueue = require('../../common/job_queue')
 const job = require('./job_queue')
 
@@ -9,10 +10,12 @@ class GuaranteeService {
   }
 
   async processJob(ctx, next) {
+    
     if(!ctx) {
       next(new Error('Invalid params'))
       return { code: -1, message: '任务失败' }
     }
+    
     next()
     return { code: 0, message: '任务成功' }
   }
