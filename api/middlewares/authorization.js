@@ -25,7 +25,7 @@ module.exports = async function(ctx, next) {
   // console.log(`################### serverSignature: ${serverSignature} ###################`)
   // console.log(`################### AUTHORIZATION CLIENT: ${authorization} ###################`)
 
-  // app做签名校验 白名单与微信端默认信任
+  // app做签名校验
   if(serverSignature === clientSignature || ctx.header.clienttype === 'web') {
     const token = await readCache(`${auth[0]}:${auth[1]}`)
     token && token ===  authorization ? (ctx.currentAccount = auth[0]) : (ctx.currentAccount = null)

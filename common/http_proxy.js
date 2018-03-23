@@ -6,12 +6,14 @@ const { signData } = require('../common/helper')
 /**
  * 统一 resolve 处理 以code处理结果
  */
-module.exports.httpProxy = (proxyUrl, params, options = {}) => {
+module.exports.httpProxy = (proxyUrl, params, options = {}, verb, timeout) => {
   return new Promise((resolve, reject) => {
-    request.post({
+    request({
+      method: verb || 'GET', 
       url: proxyUrl,
       form: params,
-      headers: options
+      headers: options,
+      timeout: options.timeout || 5000
     }, (err, res, body) => {
       if (err) return resolve({ code: -1, message: '请求失败' })
       try {
