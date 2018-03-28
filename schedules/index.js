@@ -1,1 +1,6 @@
-//require('./publish_message')
+/**
+ *  后台任务
+ */
+
+require('./push_message_template')
+require('../common/socket_client')
