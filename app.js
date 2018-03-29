@@ -20,6 +20,23 @@ require('./schedules')
 
 const app = new Koa()
 
+// web socket
+const server = require('http').Server(app.callback())
+const io = require('socket.io')(server)
+
+io.on('connection', client => {
+  
+  client.on('message', (data, cb) => {
+    console.log('message:', data)
+  })
+
+  client.on('disconnect', () => {
+    console.log('disconnect:')
+  })
+
+})
+
+
 config.routes.map((route) => {
   try {
     router[route.verb.toLowerCase()](route.path, async (ctx, next) => {
@@ -59,6 +76,6 @@ process.on('unhandledRejection', (reason) => {
   console.error(reason)
 })
 
-app.listen(process.env.PORT || 3000)
+server.listen(process.env.PORT || 3000)
 
 module.exports = app

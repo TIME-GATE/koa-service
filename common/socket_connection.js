@@ -15,7 +15,7 @@ const reader = module.exports.reader = async (protoName, messageName, obj) => {
 }
 
 client.on('data', (buf) => {
-  chooseFnByMsg('', 'head', buf)
+  chooseFnByMsg('', 'basemsg', buf)
 })
 
 const chooseFnByMsg = (msgId, type, obj) => {
@@ -27,7 +27,7 @@ const chooseFnByMsg = (msgId, type, obj) => {
   }
 
   switch (type) {
-    case 'head':
+    case 'basemsg':
       return reader(config.head.res.pName, config.head.res.mName, obj)
     case 'write':
       return writer(config[msgId].req.pName, config[msgId].req.mName, obj)

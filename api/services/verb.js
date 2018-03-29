@@ -4,7 +4,7 @@
  */
 const Models = require('../../models')
 const { readCache, writeCache } = require('../../common/redis')
-const { Code, CodeMsg } = require('../../config')
+const { CODE, CODE_MSG } = require('../../config')
 
 class VerbService {
 

@@ -47,7 +47,7 @@ module.exports = {
   },
   
   msgIdConfig: {
-    head: {
+    basemsg: {
       req: { pName: 'demo', mName: 'Message' },
       res: { pName: 'demo', mName: 'Message' },
     },
