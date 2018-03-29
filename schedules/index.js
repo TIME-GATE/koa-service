@@ -3,4 +3,4 @@
  */
 
 require('./push_message_template')
-require('../common/socket_client')
+require('../common/socket_connection')

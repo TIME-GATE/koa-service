@@ -3,27 +3,42 @@ const SocketProto = require('./socket_protobuf')
 
 connection()
 
-const writer = module.exports.writer = (obj) => {
-  const w = SocketProto.encode('finance', 'RequestDyna', obj)
+const writer = module.exports.writer = async (obj) => {
+  const w = await SocketProto.encode('demo', 'Message', obj)
   client.write(w)
 }
 
-const reader = module.exports.reader = (obj) => {
-  const r = SocketProto.decode('finance', 'RequestDyna', obj)
+const reader = module.exports.reader = async (obj) => {
+  const r = await SocketProto.decode('demo', 'Message', obj)
   return r
 }
 
 client.on('data', (buf) => {
-  SocketProto.decode('finance', 'RequestDyna', buf)
+  SocketProto.decode('demo', 'Message', buf)
 })
 
-const chooseFnByMsgid = (msgId) => {
+const chooseFnByMsgid = (msgId, obj = {}) => {
+  console.log('msgId: ', msgId)
   switch (msgId) {
-    case 'value':
-      
+    case 1:
+      writer(obj)
+      break
+    case 2:
+      writer(obj)
       break;
-  
+    case 3:
+      writer(obj)
+      break
     default:
-      break;
+      console.log('noting to do: ', msgId)
+      break
   }
 }
+
+// chooseFnByMsgid(1, 
+//   {
+//     Field: "String"
+//   }
+// )
+
+module.exports = chooseFnByMsgid

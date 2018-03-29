@@ -52,25 +52,20 @@ message dyna {
     }
 
     //包体
-    message BaseBody{       //消息体
+    message BaseBody {       //消息体
       optional bytes     MsgData      = 1;                // 消息数据
-      //optional ExtensionsData Extensions  = 1000;         // 扩展数据（key, value）格式
     }
 
     //包头
-    message BaseHead{       //消息头
+    message BaseHead {       //消息头
       required uint64     ReqID       = 1;                // 请求ID(taskId)
       optional uint32     Priority    = 2 [default=8];    // 优先级 0 - 15, 默认8
       optional uint32     ReplyMode   = 3 [default=0];    // -1 is push, 0 - N is reply times
       optional uint64     ReplyID     = 4 [default=0];    // reply number: 1, 2, etc.
       optional string     Sender      = 5;                // 发送者(source)
-      //optional EnumReplyType ReplyTo  = 6[default=DEFAULT]; // 接收者(destination)因为考虑到PC端的行情也是共用的，所以这里使用optional标识，但在交易时，此字段为必传值
       optional int64      Time        = 7;                // Time
       optional string     Token       = 8;                // Token
-      //optional EnumMsgID  MsgID       = 9;                // 消息业务EnumMsgID
-      //optional BaseError  Error       = 10;               // Error
       optional string     RspCompress = 11;               // 回复可选使用的压缩算法 "","q"--quote,"gzip", "zlib", "flate"
-      //optional ExtensionsData Extensions  = 1000;
     }
 
     // 请求

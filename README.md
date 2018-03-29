@@ -2,8 +2,9 @@
 ```text
   1、包含Rest-ful、Middleware、Hooks、鉴权等
   2、包含MongoDB、Mysql、redis等数据操作库或接口
-  3、用C++编写Node扩展库DEMO，方便对第三方的C++调用及分离计算密集型业务
-  4、用神经网络实现一个关于分类的计算与预测简易模型
+  3、分装http、socket、protobuf工具
+  4、用C++编写Node扩展库DEMO，方便对第三方的C++调用及分离计算密集型业务
+  5、用神经网络实现一个关于分类的计算与预测简易模型
 ```
 
 --------------

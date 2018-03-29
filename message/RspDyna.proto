@@ -1,8 +1,0 @@
-package awesomepackage;
-syntax = "proto3";
-
-message ResponseDyna {
-    repeated    Dyna           DynaData           =    1 ;
-    optional    ServiceError   Result             =    1000 ;     //返回结果
-    optional    SubType        Sub                =    SubNone;    //是否推送
-}

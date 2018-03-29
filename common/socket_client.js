@@ -6,8 +6,7 @@
 
 const net = require('net')
 
-const HOST = 'quotes.fdzq.com'
-const PORT = 9999
+const [HOST, PORT] = ['127.0.0.1', 9999]
 
 const client = new net.Socket()
 

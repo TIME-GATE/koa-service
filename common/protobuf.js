@@ -6,6 +6,7 @@ class Proto {
   async loadByName(protoName, messageName, obj, type) {
     return new Promise((resolve, reject) => {
       protobuf.load(`${protoPath}${protoName}.proto`, (err, root) => {
+
         if (err) {
           return console.log(err) || resolve()
         }

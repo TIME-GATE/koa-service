@@ -1,0 +1,32 @@
+package demo;
+
+message Message {
+  required string Field = 1;
+}
+
+message Msg {
+
+    // 数据包的格式
+    message BaseMsg {
+      required BaseHead  Head         = 1;                //头
+      optional BaseBody  Body         = 2;                //体
+    }
+
+    //包体
+    message BaseBody {       //消息体
+      optional bytes     MsgData      = 1;                // 消息数据
+    }
+
+    //包头
+    message BaseHead {       //消息头
+      required uint64     ReqID       = 1;                // 请求ID(taskId)
+      optional uint32     Priority    = 2 [default=8];    // 优先级 0 - 15, 默认8
+      optional uint32     ReplyMode   = 3 [default=0];    // -1 is push, 0 - N is reply times
+      optional uint64     ReplyID     = 4 [default=0];    // reply number: 1, 2, etc.
+      optional string     Sender      = 5;                // 发送者(source)
+      optional int64      Time        = 7;                // Time
+      optional string     Token       = 8;                // Token
+      optional string     RspCompress = 11;               // 回复可选使用的压缩算法 "","q"--quote,"gzip", "zlib", "flate"
+    }
+
+}
