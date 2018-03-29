@@ -48,9 +48,9 @@
     "supertest": "^3.0.0"
   },
   "scripts": {
-    "test": "NODE_ENV='test' node ./node_modules/mocha/bin/_mocha --timeout 10000 --bail --recursive 'test/**/*.spec.js'",
+    "test": "NODE_ENV='test' node ./node_modules/mocha/bin/_mocha --timeout 10000 --bail --recursive 'test/**/*.js'",
     "start": "node app.js",
     "serve": "gulp serve",
-    "ci": "NODE_ENV='ci' node ./node_modules/mocha/bin/_mocha --timeout 10000 --bail --recursive 'test/**/*.spec.js'"
+    "ci": "NODE_ENV='ci' node ./node_modules/mocha/bin/_mocha --timeout 10000 --bail --recursive 'test/**/*.js'"
   }
 }

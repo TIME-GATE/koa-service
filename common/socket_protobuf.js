@@ -1,13 +1,13 @@
 /**
  *  序列化、反序列化
-*/
+ */
 const crypto = require('crypto')
 const Proto = require('./protobuf')
 
 class SocketProto {
 
   async doTranslation(obj, protoName, messageName, operation) {
-    console.log(123)
+
     try {
       switch (operation) {
         case 'decode':

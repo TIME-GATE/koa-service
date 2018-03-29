@@ -1,27 +1,54 @@
-const { connection, client } = require('./socket')
-const SocketProto = require('./socket_protobuf')
+/**
+ * 1、动态加载protobuf
+ * 2、socket数据流断包、粘包处理(TODO)
+ * 3、心跳机制、及断线重连
+ */
 
-connection()
+const net = require('net')
 
-const writer = module.exports.writer = (obj) => {
-  client.write(SocketProto.encode('finance', 'RequestDyna', obj))
+const HOST = 'quotes.fdzq.com'
+const PORT = 9999
+
+const client = new net.Socket()
+
+const connection = () => {
+  client.connect(PORT, HOST, () => { console.log('CONNECTED TO: ' + HOST + ':' + PORT)})
 }
 
-const reader = module.exports.reader = (obj) => {
-  SocketProto.decode('finance', 'RequestDyna', obj)
-}
-
-client.on('data', (buf) => {
-  SocketProto.decode('finance', 'RequestDyna', buf)
+client.on('data', (data) => {
+  console.log('CONNECT DATA: ', data)
 })
 
-const chooseFnByMsgid = (msgId) => {
-  switch (msgId) {
-    case 'value':
-      
-      break;
+client.on('error', (e) => {
+  console.log('CONNECT ERROR: ' + e)
+})
+
+client.on('timeout', (e) => {
+  console.log('CONNECT TIMEOUT: ' + e)
+})
+
+client.on('end', (e) => {
+  console.log('CONNECT END: ' + e)
+})
+
+client.on('close', (e) => {
+  console.log('CONNECT CLOSE: ' + e)
   
-    default:
-      break;
+  if (client.destroyed) {
+    client.destroy()
   }
-}
+
+  setTimeout(connection, 3000)
+})
+
+process.on('exit', () => {
+  client.destroy()
+
+  client.on('close', () => {
+    console.log('Connection closed')
+  })
+
+})
+
+// 连接 客户端
+module.exports = { connection, client }
