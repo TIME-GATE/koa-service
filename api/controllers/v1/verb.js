@@ -1,12 +1,12 @@
 /**
  * Created by Joseph on 18/09/2017. 
- * C++ plugin for Node.js
  */
+
 const Api = require('koa-hooks').Api
 const VerbService = require('../../services/verb.js')
 
 class VerbApi extends Api {
-  constructor(ctx, next, cb){
+  constructor(ctx, next, cb) {
     super(ctx, next, cb)
     this.addHooks([
       'verbGetOnThisRequest.beforeVerbCheckLogin',
