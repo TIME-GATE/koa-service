@@ -19,7 +19,7 @@ class Proto {
 
         switch (type) {
           case 'decode':
-            return resolve(data.decode(obj))
+            return resolve(data.toObject(data.decode(obj), { longs: String }))
           case 'encode':
             return resolve(data.encode(data.create(obj) || '').finish())
         }
