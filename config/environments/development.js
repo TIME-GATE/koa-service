@@ -45,5 +45,24 @@ module.exports = {
 
   httpProxy: {
   },
+  
+  msgIdConfig: {
+    head: {
+      req: { pName: 'demo', mName: 'Message' },
+      res: { pName: 'demo', mName: 'Message' },
+    },
+    1: {
+      req: { pName: 'demo', mName: 'Message' },
+      res: { pName: 'demo', mName: 'Message' },
+    },
+    2: {
+      req: { pName: 'demo', mName: 'Message' },
+      res: { pName: 'demo', mName: 'Message' },
+    },
+    3: {
+      req: { pName: 'demo', mName: 'Message' },
+      res: { pName: 'demo', mName: 'Message' },
+    }
+  },
 }
 

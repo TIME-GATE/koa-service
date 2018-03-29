@@ -1,6 +1,6 @@
-package finance;
+package msg;
 
-message dyna {
+message MsgTemplate {
 
     // 订阅推送
     enum SubType {
@@ -45,7 +45,7 @@ message dyna {
       ErrServiceEnd                     = 3000;
     }
 
-    // 数据包的格式
+    // 数据包格式
     message BaseMsg {
       required BaseHead  Head         = 1;                //头
       optional BaseBody  Body         = 2;                //体
@@ -65,7 +65,14 @@ message dyna {
       optional string     Sender      = 5;                // 发送者(source)
       optional int64      Time        = 7;                // Time
       optional string     Token       = 8;                // Token
-      optional string     RspCompress = 11;               // 回复可选使用的压缩算法 "","q"--quote,"gzip", "zlib", "flate"
+      optional EnumMsgID  MsgID       = 9;                // 消息业务ID
+      optional string     RspCompress = 10;               // 回复可选使用的压缩算法 "","q"--quote,"gzip", "zlib", "flate"
+    }
+
+    // 业务ID
+    enum EnumMsgID {
+      Msg_Request                     = 1;                // 对应Request
+      Msg_Response                    = 2;                // 对应Response
     }
 
     // 请求
