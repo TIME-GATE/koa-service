@@ -25,9 +25,10 @@ const server = require('http').Server(app.callback())
 const io = require('socket.io')(server)
 
 io.on('connection', client => {
-  
-  client.on('message', (data, cb) => {
-    console.log('message:', data)
+  console.log('new connection:')
+
+  client.on('news', (data, cb) => {
+    console.log('news:', data)
   })
 
   client.on('disconnect', () => {

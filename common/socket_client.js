@@ -15,23 +15,23 @@ const connection = () => {
 }
 
 client.on('data', (data) => {
-  console.log('CONNECT DATA: ', data)
+  console.log(`${HOST}:${PORT} CONNECT DATA: `, data)
 })
 
 client.on('error', (e) => {
-  console.log('CONNECT ERROR: ' + e)
+  console.log(`${HOST}:${PORT} CONNECT ERROR: ` + e)
 })
 
 client.on('timeout', (e) => {
-  console.log('CONNECT TIMEOUT: ' + e)
+  console.log(`${HOST}:${PORT} CONNECT TIMEOUT: ` + e)
 })
 
 client.on('end', (e) => {
-  console.log('CONNECT END: ' + e)
+  console.log(`${HOST}:${PORT} CONNECT END: ` + e)
 })
 
 client.on('close', (e) => {
-  console.log('CONNECT CLOSE: ' + e)
+  console.log(`${HOST}:${PORT} CONNECT CLOSE: ` + e)
   
   if (client.destroyed) {
     client.destroy()
