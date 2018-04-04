@@ -6,3 +6,5 @@ dump.rdb
 data/*
 npm-debug.log
 *.tar.gz
+coverage
+.nyc_output
