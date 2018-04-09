@@ -1,4 +1,5 @@
 const profiler = require('v8-profiler')
+const heapdump = require('heapdump')
 
 class Apm {
   constructor() {
@@ -12,6 +13,12 @@ class Apm {
 
   compareSnap() {
     console.log('snapshot_compare:', this.beforeSnap.compare(this.afterSnap))
+  }
+
+  printHeapdump() {
+    heapdump.writeSnapshot((err, filename) => {
+      console.log('filename:', filename)
+    })
   }
 
 }
