@@ -2,7 +2,7 @@
  * 文本相似度
  *  预处理： 先进行分词、合并、降维等操作
  *  input： 各种源文本分词后转化为拼音
- *  output：根据simhash计算相似度TUDO, 目前计算距离即可
+ *  output：根据simhash计算相似度TUDO, 目前计算距离、频率即可
  */
 
 const natural = require('natural')
@@ -41,28 +41,33 @@ const wordToPinYin = (data) => {
   return tmp.reduce((a, c) => { return `${a}${c[0]}`})
 }
 
-const computetfIdf = (c, t, similarityCount = 0) => {
+const computetJaccardSimilarity = (c, t, similarityCount = 0) => {
   c.forEach(item => { if (t.indexOf(item) > -1) similarityCount++ })
-  console.log(similarityCount)
-  return similarityCount / Math.max(c.length, t.length)
+  return similarityCount / (c.length + t.length - similarityCount)
 }
 
-const computetDistance = (compire, type) => {
+const computetJaroWinklerSimilarity = (compire, type) => {
   const [c, t] = [compire.join(''), compire.join('')]
   return natural.JaroWinklerDistance(c, t)
 }
 
-const computeSimilarity = (compire, target, type) => {
+const computeSimilarity = (compire, target, eType, sType = 'computetJaccardSimilarity') => {
   if ('string' != typeof compire || 'string' != typeof target) {
     return console.log(`need given String : ${compire} ${target}`) || 0
   }
 
-  const c = extract(compire, type).map(i => { return wordToPinYin(i.word) })
-  const t = extract(target, type).map(i => { return wordToPinYin(i.word) })
+  const c = extract(compire, eType).map(i => { return wordToPinYin(i.word) })
+  const t = extract(target, eType).map(i => { return wordToPinYin(i.word) })
 
-  console.log(c, t)
+  switch (sType) {
+    case 'computetJaccardSimilarity':
+      return computetJaccardSimilarity(c, t)
+    case 'computetJaroWinklerSimilarity':
+      return computetJaroWinklerSimilarity(c, t)  
+    default:
+      return computetJaccardSimilarity(c, t)  
+  }
 
-  return computetfIdf(c, t)
 }
 
 module.exports = { computeSimilarity }
