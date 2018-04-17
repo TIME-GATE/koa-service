@@ -13,8 +13,26 @@ nodejieba.load({
   stopWordDict: nodejieba.DEFAULT_STOP_WORD_DICT
 })
 
-const extract = (data, topN = 1000) => {
-  const tmp = nodejieba.extract(data, topN)
+const extract = (data, type = 'extract', topN = 1000) => {
+  let tmp = []
+
+  switch (type) {
+    case 'extract':
+      tmp = nodejieba.extract(data, topN)
+      break
+    case 'cut':
+      tmp = nodejieba.cut(data, topN).map(item => { return { word: item }})
+      break
+    case 'tag':
+      tmp = nodejieba.tag(data, topN)
+      break
+    case 'cutAll':
+      tmp = nodejieba.cutAll(data, topN).map(item => { return { word: item } })
+      break
+    default:
+      break
+  }
+
   return tmp.sort((a, b) => { return a.word >= b.word})
 }
 
@@ -23,15 +41,28 @@ const wordToPinYin = (data) => {
   return tmp.reduce((a, c) => { return `${a}${c[0]}`})
 }
 
-const computeSimilarity = (compire, target) => {
+const computetfIdf = (c, t, similarityCount = 0) => {
+  c.forEach(item => { if (t.indexOf(item) > -1) similarityCount++ })
+  console.log(similarityCount)
+  return similarityCount / Math.max(c.length, t.length)
+}
+
+const computetDistance = (compire, type) => {
+  const [c, t] = [compire.join(''), compire.join('')]
+  return natural.JaroWinklerDistance(c, t)
+}
+
+const computeSimilarity = (compire, target, type) => {
   if ('string' != typeof compire || 'string' != typeof target) {
     return console.log(`need given String : ${compire} ${target}`) || 0
   }
 
-  const c = extract(compire).map(i => { return wordToPinYin(i.word) }).join('')
-  const t = extract(target).map(i => { return wordToPinYin(i.word) }).join('')
+  const c = extract(compire, type).map(i => { return wordToPinYin(i.word) })
+  const t = extract(target, type).map(i => { return wordToPinYin(i.word) })
 
-  return natural.JaroWinklerDistance(c, t)
+  console.log(c, t)
+
+  return computetfIdf(c, t)
 }
 
 module.exports = { computeSimilarity }

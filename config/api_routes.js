@@ -18,4 +18,7 @@ module.exports.routes = [
   // GUARANTEE
   { verb: 'POST',   path: '/v1/guarantee',            fn: 'guarantee.testGuarantee',           desc: '测试事务性保证' },
 
+  // Similarity
+  { verb: 'POST', path: '/v1/nlp/textSimilarity', fn: 'nlp.computeTextSimilarity', desc: '文本相似度' },
+
 ]
