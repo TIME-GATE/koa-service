@@ -30,6 +30,7 @@
     "mqtt": "^2.5.2",
     "mysql": "^2.13.0",
     "natural": "^0.5.6",
+    "node-fetch": "^2.1.2",
     "nodejieba": "^2.2.5",
     "nyc": "^11.6.0",
     "pinyin": "^2.8.3",
@@ -40,7 +41,12 @@
     "sequelize-redis-cache": "^2.0.0",
     "should": "^13.2.1",
     "soap": "^0.18.0",
-    "v8-profiler": "^5.7.0"
+    "v8-profiler": "^5.7.0",
+    "zipkin": "^0.12.0",
+    "zipkin-context-cls": "^0.11.0",
+    "zipkin-instrumentation-express": "^0.12.0",
+    "zipkin-instrumentation-fetch": "^0.12.0",
+    "zipkin-transport-http": "^0.12.0"
   },
   "devDependencies": {
     "expect": "^1.20.2",

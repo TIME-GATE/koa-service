@@ -15,7 +15,7 @@ class AESEncrypt {
           return cipher.update(data, 'utf8', 'hex') + cipher.final('hex')
       }
     } catch (err) {
-      sails.log.error(err)
+      console.log(err)
       return null
     }
   }
@@ -31,3 +31,6 @@ class AESEncrypt {
 }
 
 module.exports = new AESEncrypt()
+
+
+const ddd = new AESEncrypt()

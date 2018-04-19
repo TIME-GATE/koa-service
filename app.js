@@ -7,10 +7,14 @@ const bodyParser = require('koa-bodyparser')
 const csrf = require('koa-csrf')
 const cors = require('koa-cors')
 
+const zipkinMiddleware = require('zipkin-instrumentation-express').expressMiddleware
+
 const Helpers = require('./common/helper')
 const sequelize = require('./common/sequelize')
 const config = require('./config')
 const authorization = require('./api/middlewares/authorization')
+const { tracer } = require('./common/tracing_zipkin')
+const tracing = require('./api/middlewares/tracing_zipkin')
 
 // 同步数据库
 // sequelize.sync()
@@ -61,6 +65,7 @@ app.use(cors())
 app.use(config.logger.access())
 app.use(bodyParser())
 app.use(authorization)
+app.use(tracing)
 app.use(router.routes())
 app.use(router.allowedMethods())
 app.use(compress())

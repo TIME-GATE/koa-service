@@ -1,7 +1,7 @@
 /**
  * 文本相似度
  *  预处理： 先进行分词、合并、降维等操作
- *  input： 各种源文本分词后转化为拼音
+ *  input： 将各种源文本分词后转化为拼音
  *  output：根据simhash计算相似度TUDO, 目前计算距离、频率即可
  */
 
@@ -46,12 +46,31 @@ const computetJaccardSimilarity = (c, t, similarityCount = 0) => {
   return similarityCount / (c.length + t.length - similarityCount)
 }
 
-const computetJaroWinklerSimilarity = (compire, type) => {
-  const [c, t] = [compire.join(''), compire.join('')]
+const computetJaroWinklerSimilarity = (compire, target) => {
+  const [c, t] = [compire.join(''), target.join('')]
   return natural.JaroWinklerDistance(c, t)
 }
 
-const computeSimilarity = (compire, target, eType, sType = 'computetJaccardSimilarity') => {
+const computetSimhashSimilarity = (compire, target) => {
+  const c = compire.reduce((a, c) => { return `${a}${c.word.charCodeAt().toString(2) * c.word.weight}`})
+  const t = target.reduce((a, c) => { return `${a}${c.word.charCodeAt().toString(2) * c.word.weight}` })
+
+  return hammingDis(c, t)
+}
+
+const hammingDis = (x, y) => {
+  let [dist, val] = [0, x ^ y]
+  
+  while (val != 0) {
+    dist++
+    val &= val - 1
+  }
+
+  return dist
+}
+
+
+const computeSimilarity = (compire, target, eType, sType = 'Jaccard') => {
   if ('string' != typeof compire || 'string' != typeof target) {
     return console.log(`need given String : ${compire} ${target}`) || 0
   }
@@ -60,14 +79,19 @@ const computeSimilarity = (compire, target, eType, sType = 'computetJaccardSimil
   const t = extract(target, eType).map(i => { return wordToPinYin(i.word) })
 
   switch (sType) {
-    case 'computetJaccardSimilarity':
+    case 'Jaccard':
       return computetJaccardSimilarity(c, t)
-    case 'computetJaroWinklerSimilarity':
+    case 'JaroWinkler':
       return computetJaroWinklerSimilarity(c, t)  
+    case 'Simhash':
+      return computetSimhashSimilarity(c, t)
     default:
       return computetJaccardSimilarity(c, t)  
   }
 
 }
 
-module.exports = { computeSimilarity }
+module.exports = { 
+  computeSimilarity,
+  hammingDis,
+ }
