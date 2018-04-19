@@ -3,9 +3,11 @@ const {
   Tracer,
   Request,
   ctxImpl,
+  TraceId,
  } = require('zipkin')
 
 module.exports = {
   Tracer,
-  ctxImpl
+  ctxImpl,
+  TraceId
 }
