@@ -29,4 +29,14 @@ Helpers.response = (ctx, data = {}) => {
     message: data.message || '请求成功',
     data: data.data || {} 
   }
+
+}
+
+Helpers.sleep = (ttl = 3000, flag = true) => {
+  const timeNow = new Date().getTime()
+  
+  while (flag) {
+    if (new Date().getTime() - timeNow >= ttl) flag = false
+  }
+
 }

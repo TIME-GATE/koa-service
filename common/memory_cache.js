@@ -1,6 +1,6 @@
 const NodeCache = require('node-cache')
 
-const memoryCache = new NodeCache()
+const memoryCache = new NodeCache({ stdTTL: 3, checkperiod: 120 })
 
 module.exports.memoryCache = memoryCache
 
@@ -10,7 +10,7 @@ module.exports.writeMemoryCache = async (key, obj, ttl = 3000) => {
       if (!err && success) {
         return resolve({ code: 0 })
       } else {
-        return console.log('set cache in memory err: ', err) && resolve({ code: -1 })
+        return console.log('set cache in memory err: ', err) || resolve({ code: -1 })
       }
     })
   })
@@ -22,7 +22,7 @@ module.exports.readMemoryCache = async(key) => {
       if (!err && value) {
         return resolve({ code: 0, data: value })
       } else {
-        return console.log('get cache in memory err: ', err) && resolve({ code: -1 })
+        return console.log('get cache in memory err: ', err) || resolve({ code: -1 })
       }
     })
   })
