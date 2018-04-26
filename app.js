@@ -1,3 +1,8 @@
+/*
+ * apm
+ */
+require('newrelic')
+
 const Koa = require('koa')
 const router = require('koa-router')()
 
@@ -6,8 +11,6 @@ const bodyParser = require('koa-bodyparser')
 
 const csrf = require('koa-csrf')
 const cors = require('koa-cors')
-
-const zipkinMiddleware = require('zipkin-instrumentation-express').expressMiddleware
 
 const Helpers = require('./common/helper')
 const sequelize = require('./common/sequelize')
@@ -65,8 +68,8 @@ app.use(cors())
 app.use(config.logger.access())
 app.use(bodyParser())
 app.use(authorization)
-//app.use(tracing.tracingMid1)
-//app.use(tracing.tracingMid2)
+app.use(tracing.tracingMid1)
+app.use(tracing.tracingMid2)
 app.use(router.routes())
 app.use(router.allowedMethods())
 app.use(compress())

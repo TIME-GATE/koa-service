@@ -8,3 +8,5 @@ npm-debug.log
 *.tar.gz
 coverage
 .nyc_output
+newrelic.js
+newrelic_agent.log
