@@ -30,6 +30,7 @@
     "mqtt": "^2.5.2",
     "mysql": "^2.13.0",
     "natural": "^0.5.6",
+    "node-cache": "^4.2.0",
     "node-fetch": "^2.1.2",
     "nodejieba": "^2.2.5",
     "nyc": "^11.6.0",

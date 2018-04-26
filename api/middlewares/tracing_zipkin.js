@@ -52,9 +52,9 @@ const tracingMid2 = async function (ctx, next) {
   ctxImpl.scoped(() => {
 
     const id = new zipkin.TraceId({
-      traceId: new zipkin.option.Some('48485a3953bb6122'),
-      spanId: '48485a3951bb6122',
-      parentId: new zipkin.option.Some('48485a3953bb6121'),
+      traceId: new zipkin.option.Some('48485a3953bb6125'),
+      spanId: '48485a3913bb6124',
+      parentId: new zipkin.option.Some('48485a3913bb6124'),
       sampled: new zipkin.option.Some('3598a2cc24dc8315'),
     })
 
@@ -63,7 +63,7 @@ const tracingMid2 = async function (ctx, next) {
     tracer.setId(id)
 
     const result = tracer.local('middlewares-2', () => {
-      return tracer.recordBinary('demo', 'demo-2')
+      tracer.recordBinary('demo', 'demo-2')
       return tracer.recordAnnotation(new zipkin.Annotation.ClientSend())
     })
 

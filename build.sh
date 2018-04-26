@@ -9,6 +9,6 @@ image='dreamboat/koa_service:'${tag}
 
 docker build -t ${image} .
 
-docker push ${image}
+#docker push ${image}
 
 echo ${image}
