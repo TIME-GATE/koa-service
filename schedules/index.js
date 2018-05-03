@@ -4,4 +4,4 @@
 
 // require('./push_message_template')
 // require('../common/socket_connection')
-// require('./apm_snapshot')
+require('./apm_snapshot')

@@ -94,4 +94,5 @@ const computeSimilarity = (compire, target, eType, sType = 'Jaccard') => {
 module.exports = { 
   computeSimilarity,
   hammingDis,
- }
+  extract,
+}
