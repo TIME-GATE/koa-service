@@ -36,7 +36,7 @@ const reduceProcess = () => {
   })
 
   rl.on('close', () => {
-    allWords.forEach((k, v) => { console.log(`${v}:${k}`)})
+    allWords.forEach((k, v) => { console.log(`${v}:\t${k}`)})
     process.exit(0)
   })
 

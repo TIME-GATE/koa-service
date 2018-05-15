@@ -1,25 +1,38 @@
 const request = require('request')
 const iconv = require('iconv-lite')
+const https = require('https')
+const http = require('http')
+
 const config = require('../config')
 const { signData } = require('../common/helper')
+
+const httpsAgent = new https.Agent({ keepAlive: true })
+const httpAgent = new http.Agent({ keepAlive: true })
 
 /**
  * 统一 resolve 处理 以code处理结果
  */
-module.exports.httpProxy = (proxyUrl, params, options = {}, verb, timeout) => {
+module.exports.httpProxy = (verb = 'GET', proxyUrl, params, options = {}, timeout = 3000) => {
   return new Promise((resolve, reject) => {
     request({
-      method: verb || 'GET', 
+      method: verb, 
       url: proxyUrl,
       form: params,
-      headers: options,
-      timeout: options.timeout || 5000
+      qs: params,
+      // encoding: "binary",
+      headers: options.headers || {},
+      timeout: timeout,
+      agent: proxyUrl.substring(0, 5) === 'https' ? httpsAgent : httpAgent
     }, (err, res, body) => {
-      if (err) return resolve({ code: -1, message: '请求失败' })
+      
+      if (err) {
+        return console.log(`koa service request error:`, err) || resolve({ code: -1, message: '请求失败' })
+      }
+
       try {
-        resolve({ data: JSON.parse(body.trim()) })
+        resolve({ data: options.decode ? iconv.decode(body, 'GBK') : JSON.parse(body.trim()) })
       } catch(err) {
-        resolve({ code: -1, message: '解析失败' })
+        return console.log(`koa service data error:`, err) || resolve({ code: -1, message: '解析失败' })
       }
     })
   })
