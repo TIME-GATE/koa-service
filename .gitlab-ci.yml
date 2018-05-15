@@ -1,0 +1,30 @@
+stages:
+  - test
+  - development
+  - production
+
+test:
+  stage: test
+  tags:
+    - koa-service
+  script:
+    - npm run test -s
+    - echo 'test'
+
+build-dev:
+  stage: development
+  only:
+    - master
+  tags:
+    - koa-service
+  script:
+    - sh build.sh ${CI_BUILD_REF} test
+
+build-pro:
+  stage: production
+  only:
+    - production
+  tags:
+    - koa-service
+  script:
+    - sh build.sh ${CI_BUILD_REF} production
