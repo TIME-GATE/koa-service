@@ -64,5 +64,21 @@ module.exports = {
       res: { pName: 'demo', mName: 'Message' },
     }
   },
+
+  MQ_ACCOUNT = {
+    QUEUE_NAME: 'queue.name',
+    EXCHANGE_NAME: 'exchange.name',
+    ROUTE_NAME: 'route.name',
+    MQ_OPTIONS: {
+      host: '127.0.0.1',
+      port: 5673,
+      login: 'guest',
+      password: 'jessica',
+      connectionTimeout: 1000,
+      vhost: '/',
+      noDelay: true,
+      heartbeat: 60,
+    },
+  },
 }
 
