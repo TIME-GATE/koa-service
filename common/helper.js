@@ -1,5 +1,7 @@
 
 const API_ROUTE = '../api/controllers/v1/'
+const similarity = require('./nlp').computeSimilarity
+
 
 const Helpers = {}
 
@@ -39,4 +41,17 @@ Helpers.sleep = (ttl = 3000, flag = true) => {
     if (new Date().getTime() - timeNow >= ttl) flag = false
   }
 
+}
+
+Helpers.textFilter = (compire, targets = [], preRepeat = 0.8) => {
+  let curRepeat = 0
+
+  for (let item of targets) {
+    curRepeat = similarity(compire, item)
+    if (curRepeat >= preRepeat) {
+      break
+    }
+  }
+
+  return curRepeat >= preRepeat ? true : false
 }

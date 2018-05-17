@@ -38,7 +38,7 @@ const extract = (data, type = 'extract', topN = 1000) => {
 
 const wordToPinYin = (data) => {
   const tmp = pinyin(data, { style: pinyin.STYLE_NORMAL })
-  return tmp.reduce((a, c) => { return `${a}${c[0]}`})
+  return tmp.toString().replace(/,/g, '')
 }
 
 const computetJaccardSimilarity = (c, t, similarityCount = 0) => {

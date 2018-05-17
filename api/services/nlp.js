@@ -4,7 +4,7 @@
  */
 const Models = require('../../models')
 const { CODE, CODE_MSG } = require('../../config')
-const similarity = require('../../common/nlp').computeSimilarity
+const Helpers = require('../../common/helper')
 
 class NlpService {
 
@@ -14,7 +14,7 @@ class NlpService {
 
   async computeTextSimilarity(ctx, next) {
     const [targets, compire] = [ctx.request.body.targets || [], ctx.request.body.compire]
-    return { data: targets.map(item => { return similarity(compire, item) }) }
+    return { data: Helpers.textFilter(compire, targets) }
   }
 
 }
