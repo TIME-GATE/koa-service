@@ -5,7 +5,18 @@ const esClient = new elasticsearch.Client(config)
 
 module.exports.esClient = esClient
 
-module.exports.esSearch = async (index = `index_name`, size = 10, from = 20, query = { match: { 'comments.content': '我' }}, sort = { '我': 'desc' }) => {
+
+/**
+ * for examples
+ * index = `index_name`, 
+ * size = 10, 
+ * from = 20, 
+ * query = { 
+ *  match: { 'comments.content': '我' }}, 
+ *  sort = { '我': 'desc' 
+ * }
+ * */
+module.exports.esSearch = async (index, size, from, query) => {
   const data = await esClient.search({
     index,
     body: {
