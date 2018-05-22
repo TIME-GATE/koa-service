@@ -16,15 +16,11 @@ redisClient.on('error', (err) => {
  **/
 module.exports.writeCache = (key, value, expiresIn) => {
   return new Promise((resolve, reject) => {
-    redisClient.set(key, JSON.stringify(value), (err, value) => {
-      if(err) return reject(err)
-      try {
-        value = value 
-      } catch(error) {
-        value = null
-        return reject(error)
+    redisClient.set(key, JSON.stringify(value), 'EX', expiresIn, (err, value) => {
+      if(err) {
+        return console.log('redis writeCache error ') || reject(err)
       }
-      if(expiresIn) redisClient.expire(key, expiresIn)
+
       resolve(value)
     })
   })
@@ -65,8 +61,37 @@ module.exports.readHashCache = function(key) {
  * @param {String} key 
  * @param {Object} value
  **/
-module.exports.readHashCache = function(key, obj) {
+module.exports.setHashCache = function(key, obj) {
   redisClient.hmset(key, obj,function(err, res) {
     if(err)console.log(err)
   })
+}
+
+module.exports.redisKeys = async (key) => {
+  return new Promise((resolve, reject) => {
+    redisClient.keys(key, function (err, keys) {
+      if (err) {
+        return console.log('redis keys error:', err) || resolve([])
+      }
+      return console.log('redis keys is as ', keys) || resolve(keys)
+    })
+  })
+
+}
+
+module.exports.redisDel = async (key) => {
+  return new Promise((resolve, reject) => {
+    redisClient.del(key, function (err, response) {
+      if (err) {
+        return console.log('redis keys error:', err) || resolve(0)
+      }
+
+      if (response === 1) {
+        return console.log('delete key successfully', key) || resolve(response)
+      }
+
+      return console.log('can not delete ', key) || resolve(response)
+    })
+  })
+
 }
