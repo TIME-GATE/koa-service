@@ -1,4 +1,6 @@
 
+const moment = require('moment')
+
 const API_ROUTE = '../api/controllers/v1/'
 const similarity = require('./nlp').computeSimilarity
 
@@ -54,4 +56,8 @@ Helpers.textFilter = (compire, targets = [], preRepeat = 0.8) => {
   }
 
   return curRepeat >= preRepeat ? true : false
+}
+
+Helpers.zoneTime = (zone) => {
+  return moment().utcOffset(zone)
 }
