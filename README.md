@@ -1,6 +1,7 @@
 ### 简介
+
 ```text
-  1、包含Rest-ful、Middleware、Hooks、鉴权等
+  1、包含Rest-ful、Middleware、Hooks、鉴权等, 特别是在API层加入的函数劫持功能，类似于spring的aop很方便业务解耦，
   2、包含MongoDB、Mysql、redis等数据操作库或接口
   3、分装http、socket、protobuf工具
   4、用C++编写Node扩展库DEMO，方便对第三方的C++调用及分离计算密集型业务
