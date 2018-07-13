@@ -21,4 +21,5 @@ module.exports.routes = [
   // Similarity
   { verb: 'POST', path: '/v1/nlp/textSimilarity', fn: 'nlp.computeTextSimilarity', desc: '文本相似度' },
 
+  { verb: 'GET', path: '/v1/filter', fn: 'filter.testFilter', desc: '测试filter' },
 ]

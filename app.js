@@ -1,7 +1,7 @@
 /*
  * apm
  */
-require('newrelic')
+//require('newrelic')
 
 const Koa = require('koa')
 const router = require('koa-router')()
@@ -23,7 +23,7 @@ const tracing = require('./api/middlewares/tracing_zipkin')
 // sequelize.sync()
 
 // require('./models')
-require('./schedules')
+// require('./schedules')
 
 const app = new Koa()
 
@@ -68,8 +68,8 @@ app.use(cors())
 app.use(config.logger.access())
 app.use(bodyParser())
 app.use(authorization)
-app.use(tracing.tracingMid1)
-app.use(tracing.tracingMid2)
+// app.use(tracing.tracingMid1)
+// app.use(tracing.tracingMid2)
 app.use(router.routes())
 app.use(router.allowedMethods())
 app.use(compress())

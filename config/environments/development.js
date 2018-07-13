@@ -15,7 +15,7 @@ module.exports = {
     },
  
     redis: {
-      host: '192.168.77.55',
+      host: '127.0.0.1',
       port: 6379,
       options: {}
     },
@@ -65,7 +65,7 @@ module.exports = {
     }
   },
 
-  MQ_ACCOUNT = {
+  MQ_ACCOUNT: {
     QUEUE_NAME: 'queue.name',
     EXCHANGE_NAME: 'exchange.name',
     ROUTE_NAME: 'route.name',
