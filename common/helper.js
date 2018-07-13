@@ -1,5 +1,6 @@
 
 const moment = require('moment')
+const util = require('util')
 
 const API_ROUTE = '../api/controllers/v1/'
 const similarity = require('./nlp').computeSimilarity
@@ -60,4 +61,26 @@ Helpers.textFilter = (compire, targets = [], preRepeat = 0.8) => {
 
 Helpers.zoneTime = (zone) => {
   return moment().utcOffset(zone)
+}
+
+Helpers.getObjectType = (obj) => {
+  if (util.types.isBooleanObject(obj)) {
+    return 'boolean'
+  }
+
+  if (util.types.isNumberObject(obj)) {
+    return 'number'
+  }
+
+  if (util.types.isStringObject(obj)) {
+    return 'string'
+  }
+
+  return 'object'
+}
+
+Helpers.getObtType = (obj) => {
+  const t = Object.prototype.toString.call(obj)
+
+  return t.substring(8, objectString.length - 1)
 }
