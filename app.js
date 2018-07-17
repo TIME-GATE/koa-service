@@ -13,16 +13,11 @@ const csrf = require('koa-csrf')
 const cors = require('koa-cors')
 
 const Helpers = require('./common/helper')
-const sequelize = require('./common/sequelize')
 const config = require('./config')
 const authorization = require('./api/middlewares/authorization')
 const { tracer } = require('./common/tracing_zipkin')
 const tracing = require('./api/middlewares/tracing_zipkin')
 
-// 同步数据库
-// sequelize.sync()
-
-// require('./models')
 // require('./schedules')
 
 const app = new Koa()

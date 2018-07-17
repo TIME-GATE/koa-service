@@ -90,5 +90,7 @@ curl 127.0.0.1:3000/v1/verb/get
 ### 四、说明 
 ```bash
 docker run -d -p 6379:6379 redis:latest
+docker run -d -p 27017:27017 mongo:3.5
+
 Node >= v7.6.0
 ```

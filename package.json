@@ -27,6 +27,8 @@
     "moment": "^2.22.2",
     "mongoose": "^4.8.7",
     "mongoose-auto-increment": "^5.0.1",
+    "mongoose-timestamp": "^0.6.0",
+    "mongoose-unique-validator": "^2.0.1",
     "mqtt": "^2.5.2",
     "mysql": "^2.13.0",
     "natural": "^0.5.6",

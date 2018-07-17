@@ -31,6 +31,3 @@ class AESEncrypt {
 }
 
 module.exports = new AESEncrypt()
-
-
-const ddd = new AESEncrypt()

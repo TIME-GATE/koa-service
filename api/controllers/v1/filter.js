@@ -11,8 +11,6 @@ class FilterApi extends Ctl {
   }
 
   async beforeVerbCheckLogin(ctx, next, cb) {
-    console.log('adfadfadfadf')
-
     const data = await VerbService.beforeVerbCheckLogin(ctx, next)
     data ? cb(ctx, data) : await next()
   }

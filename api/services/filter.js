@@ -7,7 +7,6 @@ const { CODE, CODE_MSG } = require('../../config')
 class FilterService {
 
   async beforeVerbCheckLogin(ctx, next) {
-    console.log('adsfadf')
     return !ctx.currentAccount ? { message: CODE_MSG[10000], code: CODE.NEED_LOGIN } : null
   }
 

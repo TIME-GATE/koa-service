@@ -22,4 +22,11 @@ module.exports.routes = [
   { verb: 'POST', path: '/v1/nlp/textSimilarity', fn: 'nlp.computeTextSimilarity', desc: '文本相似度' },
 
   { verb: 'GET', path: '/v1/filter', fn: 'filter.testFilter', desc: '测试filter' },
+
+  // 接口幂等性 增删改查 idempotency
+  { verb: 'GET',    path: '/v1/idempotency',  fn: 'idempotency.testFetchIdempotency', desc: '幂等查询' },
+  { verb: 'DELETE', path: '/v1/idempotency',  fn: 'idempotency.testDelIdempotency',   desc: '幂等删除' },
+  { verb: 'POST',   path: '/v1/idempotency',  fn: 'idempotency.testEditIdempotency',  desc: '幂等修改' },
+  { verb: 'PUT',    path: '/v1/idempotency',  fn: 'idempotency.testAddIdempotency',   desc: '幂等添加' },
+
 ]
