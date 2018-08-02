@@ -1,3 +1,4 @@
+const path = require('path')
 const protocol = require('./protocol')
 
 module.exports = {
@@ -11,3 +12,14 @@ module.exports = {
   }
   
 }
+
+const validateConfig = [
+  'embedded',
+  'filter',
+  'guarantee',
+]
+
+validateConfig.map((modelName) => {
+    exports[modelName] = require(path.join(__dirname, modelName))
+})
+

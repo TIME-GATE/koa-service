@@ -3,18 +3,26 @@
  * C++ plugin for Node.js
  */
 const Api = require('koa-hooks').Api
+
 const EmbeddedService = require('../../services/embedded.js')
+const ValidateService = require('../../services/validate.js')
 
 class EmbeddedApi extends Api {
   constructor(ctx, next, cb){
     super(ctx, next, cb)
     this.addHooks([
-      'unlockYourCplusJourney.beforeUnlockYourCplusJourney'
+      'unlockYourCplusJourney.beforeUnlockYourCplusJourney',
+      'unlockYourCplusJourney.beforeOpretionInvokeValidate'
     ])
   }
 
   async beforeUnlockYourCplusJourney(ctx, next, cb) {
     const data = await EmbeddedService.beforeUnlockYourCplusJourney(ctx, next)
+    data ? cb(ctx, data) : await next()
+  }
+
+  async beforeOpretionInvokeValidate(ctx, next, cb) {
+    const data = await ValidateService.beforeOpretionInvokeValidate(ctx, next)
     data ? cb(ctx, data) : await next()
   }
 

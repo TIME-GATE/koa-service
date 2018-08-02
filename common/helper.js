@@ -82,5 +82,28 @@ Helpers.getObjectType = (obj) => {
 Helpers.getObtType = (obj) => {
   const t = Object.prototype.toString.call(obj)
 
-  return t.substring(8, objectString.length - 1)
+  return t.substring(8, t.length - 1)
 }
+
+
+const getObtType = (obj) => {
+  const t = Object.prototype.toString.call(obj)
+
+  return t.substring(8, t.length - 1)
+}
+
+[
+  {}, 
+  null,
+  new String(),
+  123,
+  Boolean,
+  NaN,
+  Function,
+  Array(),
+  Date(),
+  JSON,
+  undefined
+].map((item) => {
+  console.log(getObtType(item))
+})
