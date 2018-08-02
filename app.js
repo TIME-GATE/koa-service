@@ -15,6 +15,7 @@ const cors = require('koa-cors')
 const Helpers = require('./common/helper')
 const config = require('./config')
 const authorization = require('./api/middlewares/authorization')
+const validate = require('./api/middlewares/api_validate')
 const { tracer } = require('./common/tracing_zipkin')
 const tracing = require('./api/middlewares/tracing_zipkin')
 
@@ -56,12 +57,14 @@ config.routes.map((route) => {
  * config.logger.access: 开启请求日志
  * bodyParser: 参数解析 
  * compress: 压缩数据包
+ * validate: 参数验证
  * authorization 认证中间件
  * router: 请求路由
  */
 app.use(cors())
 app.use(config.logger.access())
 app.use(bodyParser())
+app.use(validate)
 app.use(authorization)
 // app.use(tracing.tracingMid1)
 // app.use(tracing.tracingMid2)

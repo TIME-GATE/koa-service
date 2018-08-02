@@ -46,6 +46,10 @@ Helpers.sleep = (ttl = 3000, flag = true) => {
 
 }
 
+Helpers.mergeParams = (ctx) => {
+  return Object.assign({}, ctx.query, ctx.request.body)
+}
+
 Helpers.textFilter = (compire, targets = [], preRepeat = 0.8) => {
   let curRepeat = 0
 
