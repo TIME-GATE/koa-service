@@ -29,4 +29,8 @@ module.exports.routes = [
   { verb: 'POST',   path: '/v1/idempotency',  fn: 'idempotency.testEditIdempotency',  desc: '幂等修改' },
   { verb: 'PUT',    path: '/v1/idempotency',  fn: 'idempotency.testAddIdempotency',   desc: '幂等添加' },
 
+  // 二维码
+  { verb: 'GET', path: '/v1/qr/image', fn: 'image.productImage', desc: '' },
+
+
 ]

@@ -29,6 +29,10 @@ Helpers.response = (ctx, data = {}) => {
       break
   }
 
+  if (ctx.type.match('image')) {
+    return ctx.body = data.data
+  }
+  
   ctx.body = {
     code: data.code || 0,
     message: data.message || '请求成功',
